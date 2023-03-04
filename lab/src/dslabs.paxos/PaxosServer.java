@@ -13,6 +13,7 @@ import lombok.ToString;
 public class PaxosServer extends Node {
     /** All servers in the Paxos group, including this one. */
     private final Address[] servers;
+    
 
     // Your code here...
 
