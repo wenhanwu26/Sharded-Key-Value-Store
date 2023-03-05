@@ -25,6 +25,7 @@ class P2A implements Message {
     private final Ballot ballot;
     private final ArrayList<Pvalue> acceptedLogs;
     private final int unChosenSlotBegin;
+    private final int slot_num;
 }
 
 @Data
@@ -32,6 +33,7 @@ class P2B implements Message {
     private final Ballot ballot;
     private final ArrayList<Pvalue> acceptedLogs;
     private final int unChosenSlotBegin;
+    private final int slot_num;
 }
 
 @Data
