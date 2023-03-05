@@ -422,6 +422,7 @@ public class PaxosTest extends BaseJUnitTest {
 
         assertTrue(2 * numLogsFull > runState.numServers());
         for (int i = 1; i <= simpleWorkload.size(); i++) {
+            System.out.println(i);
             assertTrue(clearedOrChosenSlots.contains(i));
         }
     }

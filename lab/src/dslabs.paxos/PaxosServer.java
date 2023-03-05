@@ -1,9 +1,14 @@
 package dslabs.paxos;
 
+import dslabs.atmostonce.AMOApplication;
+import dslabs.atmostonce.AMOCommand;
+import dslabs.atmostonce.AMOResult;
 import dslabs.framework.Address;
 import dslabs.framework.Application;
 import dslabs.framework.Command;
 import dslabs.framework.Node;
+import java.util.ArrayList;
+import java.util.HashSet;
 import lombok.EqualsAndHashCode;
 import lombok.ToString;
 
@@ -13,9 +18,15 @@ import lombok.ToString;
 public class PaxosServer extends Node {
     /** All servers in the Paxos group, including this one. */
     private final Address[] servers;
-    
 
     // Your code here...
+    private AMOApplication app;
+    private Ballot largestBallot = new Ballot(0, address());
+    private ArrayList<Pvalue> acceptedLogs = new ArrayList<>();
+    private boolean isActive = false;
+    private int unChosenSlotBegin = 1;
+    private int P2BCount = 0;
+    private int P1BCount = 0;
 
     /* -------------------------------------------------------------------------
         Construction and Initialization
@@ -23,7 +34,7 @@ public class PaxosServer extends Node {
     public PaxosServer(Address address, Address[] servers, Application app) {
         super(address);
         this.servers = servers;
-
+        this.app = new AMOApplication(app);
         // Your code here...
     }
 
@@ -31,6 +42,7 @@ public class PaxosServer extends Node {
     @Override
     public void init() {
         // Your code here...
+        sendP1A();
     }
 
     /* -------------------------------------------------------------------------
@@ -58,7 +70,16 @@ public class PaxosServer extends Node {
      */
     public PaxosLogSlotStatus status(int logSlotNum) {
         // Your code here...
-        return null;
+        // TODO: garbage collected
+        if (logSlotNum < unChosenSlotBegin) {
+            return PaxosLogSlotStatus.CHOSEN;
+        } else if (acceptedLogs.size() > 0 && logSlotNum <=
+                acceptedLogs.get(acceptedLogs.size() - 1).slot_num()) {
+            return PaxosLogSlotStatus.ACCEPTED;
+        } else {
+            return PaxosLogSlotStatus.EMPTY;
+        }
+        //return null;
     }
 
     /**
@@ -83,6 +104,11 @@ public class PaxosServer extends Node {
      */
     public Command command(int logSlotNum) {
         // Your code here...
+        for (Pvalue pvalue : acceptedLogs) {
+            if (pvalue.slot_num() == logSlotNum) {
+                return pvalue.paxosRequest().command().command();
+            }
+        }
         return null;
     }
 
@@ -115,6 +141,9 @@ public class PaxosServer extends Node {
      */
     public int lastNonEmpty() {
         // Your code here...
+        if (acceptedLogs.size() > 0) {
+            return acceptedLogs.get(acceptedLogs.size() - 1).slot_num();
+        }
         return 0;
     }
 
@@ -123,9 +152,114 @@ public class PaxosServer extends Node {
        -----------------------------------------------------------------------*/
     private void handlePaxosRequest(PaxosRequest m, Address sender) {
         // Your code here...
+        // isActive, then can send P2A
+        // drop if inactive
+        if (isActive) {
+            System.out.println(address() + " receive Paxos Request "+m);
+            // inefficient, may need optimize
+            for (Pvalue pvalue : acceptedLogs) {
+                if (pvalue.paxosRequest().equals(m)) {
+                    return;
+                }
+            }
+
+            int slot_num = acceptedLogs.size() > 0 ?
+                    acceptedLogs.get(acceptedLogs.size() - 1).slot_num() + 1 :
+                    1;
+            acceptedLogs.add(new Pvalue(slot_num, largestBallot, m));
+            sendP2A();
+        }
     }
 
+
     // Your code here...
+    private void handleP1A(P1A m, Address sender) {
+        if (largestBallot.compareTo(m.ballot()) <= 0) {
+            System.out.println(address() + " receive P1A with " + m +" from "+sender);
+            if (largestBallot.compareTo(m.ballot()) < 0) {
+                isActive = false;
+                largestBallot = m.ballot();
+                sendP1B(sender);
+            }
+            // reset count when try to become leader
+//            if (largestBallot.compareTo(m.ballot()) == 0) {
+//                P1BCount = 0;
+//                //sendP1B(sender);
+//            }
+        }
+    }
+
+    private void handleP1B(P1B m, Address sender) {
+        if (largestBallot.compareTo(m.ballot()) <= 0) {
+            System.out.println(address() + " receive P1B with " + m +" from "+sender);
+            if (largestBallot.compareTo(m.ballot()) < 0) {
+                // a bit weird if getting here, send to this leader with ballot higher than this leader
+                isActive = false;
+                largestBallot = m.ballot();
+            } else if (largestBallot.compareTo(m.ballot()) == 0) {
+                updateAcceptedLogs(m.acceptedLogs(), m.unChosenSlotBegin());
+                P1BCount++;
+                if (P1BCount + 1 > servers.length / 2) { // didnt send p1b to itself so +1 to include itself
+                    isActive = true;
+                    P1BCount = 0;
+                    sendP2A();
+                }
+            }
+        }
+
+    }
+
+    private void handleP2A(P2A m, Address sender) {
+        if (largestBallot.compareTo(m.ballot()) <= 0) {
+            System.out.println(address() + " receive P2A with " + m+" from "+sender);
+            if (largestBallot.compareTo(m.ballot()) < 0) {
+                isActive = false;
+            }
+            largestBallot = m.ballot();
+            acceptedLogs = m.acceptedLogs();
+            unChosenSlotBegin =
+                    Math.max(m.unChosenSlotBegin(), unChosenSlotBegin);
+            P2BCount = 0;
+            sendP2B();
+        }
+    }
+
+    private void handleP2B(P2B m, Address sender) {
+        if (largestBallot.compareTo(m.ballot()) < 0) {
+          //  System.out.println(address() + " receive P2B with " + m+" from "+sender);
+            isActive = false;
+            largestBallot = m.ballot();
+            acceptedLogs = m.acceptedLogs();
+            unChosenSlotBegin =
+                    Math.max(m.unChosenSlotBegin(), unChosenSlotBegin);
+            P2BCount = 0;
+        } else if (largestBallot.compareTo(m.ballot()) == 0) {
+           // System.out.println(address() + " receive P2B with " + m+" from "+sender);
+            P2BCount++;
+            if (P2BCount > servers.length / 2) {
+                if (acceptedLogs.size() > 0) {
+                    executeCommand();
+                    unChosenSlotBegin =
+                            acceptedLogs.get(acceptedLogs.size() - 1)
+                                        .slot_num()+1;
+                }
+            }
+        }
+    }
+
+    public void executeCommand() {
+        for (int i = 0; i < acceptedLogs.size(); i++) {
+            if (acceptedLogs.get(i).slot_num() >= unChosenSlotBegin) {
+                AMOCommand AMOCommand =
+                        acceptedLogs.get(i).paxosRequest().command();
+                AMOResult AMOResult = app.execute(AMOCommand);
+                if (AMOResult != null && isActive) {
+                    send(new PaxosReply(AMOResult), AMOCommand.clientAddress());
+                }
+            }
+        }
+    }
+
 
 
     /* -------------------------------------------------------------------------
@@ -137,4 +271,110 @@ public class PaxosServer extends Node {
         Utils
        -----------------------------------------------------------------------*/
     // Your code here...
+    // for leader in P1B
+    private void updateAcceptedLogs(ArrayList<Pvalue> LogsToCompare,
+                                    int unChosenSlotBeginToCompare) {
+
+        if (LogsToCompare.size() == 0) {
+            return;
+        }
+
+        if (acceptedLogs.size() == 0) {
+            // LogsToCompare should be a new arraylist if get it from message so no need deep copy constructor
+            acceptedLogs = LogsToCompare;
+        }
+
+        // acceptedLogs may have different length, maybe one hasn't finished garbage collected
+        int index1 = 0, index2 = 0;
+        while (acceptedLogs.get(index1).slot_num() !=
+                LogsToCompare.get(index2).slot_num()) {
+            int slot_num1 = acceptedLogs.get(index1).slot_num();
+            int slot_num2 = LogsToCompare.get(index2).slot_num();
+            if (slot_num1 > slot_num2) {
+                index2++;
+            } else {
+                index1++;
+            }
+        }
+
+        // copy value of slot before max of unchosenSlot and unChosenSlotBeginToCompare
+        int maxUnChosenSlot =
+                Math.max(unChosenSlotBegin, unChosenSlotBeginToCompare);
+        while (acceptedLogs.get(index1).slot_num() < maxUnChosenSlot) {
+            if (index1 < acceptedLogs.size()) {
+                acceptedLogs.set(index1, LogsToCompare.get(index2));
+            } else {
+                acceptedLogs.add(LogsToCompare.get(index2));
+            }
+            index1++;
+            index2++;
+        }
+
+        // get the value with the largest ballot number for each slot not in chosenIndex
+        while (index1 < acceptedLogs.size() && index2 < LogsToCompare.size()) {
+
+            // null, no-op case
+            // why there is hole ?
+
+            if (acceptedLogs.get(index1).ballot()
+                            .compareTo(LogsToCompare.get(index2).ballot()) <
+                    0) {
+                // else if ballot is smaller than replace it with higher ballot
+                acceptedLogs.set(index1, LogsToCompare.get(index2));
+            }
+            index1++;
+            index2++;
+        }
+
+        // if have something remaining in LogsToCompare, give it to acceptedLogs
+        while (index2 < LogsToCompare.size()) {
+            acceptedLogs.add(LogsToCompare.get(index2));
+            index2++;
+        }
+
+    }
+
+    private void sendP1A() {
+        largestBallot = new Ballot(largestBallot.sequenceNum() + 1, address());
+        for (Address serverAddress : servers) {
+            if (serverAddress.equals(address())) {
+                handleP1A(new P1A(largestBallot), address());
+            } else {
+                send(new P1A(largestBallot), serverAddress);
+            }
+        }
+    }
+
+    private void sendP1B(Address leader) {
+        send(new P1B(largestBallot, acceptedLogs, unChosenSlotBegin), leader);
+    }
+
+    private void sendP2A() {
+        // only the leader can call this method
+        // may need to have extra seq# to differentiate P2A with same ballot
+        largestBallot = new Ballot(largestBallot.sequenceNum() + 1, address());
+        for (Address serverAddress : servers) {
+            if (serverAddress.equals(address())) {
+                handleP2A(
+                        new P2A(largestBallot, acceptedLogs, unChosenSlotBegin),
+                        address());
+            } else {
+                send(new P2A(largestBallot, acceptedLogs, unChosenSlotBegin),
+                        serverAddress);
+            }
+        }
+    }
+
+    private void sendP2B() {
+        for (Address serverAddress : servers) {
+            if (serverAddress.equals(address())) {
+                handleP2B(
+                        new P2B(largestBallot, acceptedLogs, unChosenSlotBegin),
+                        address());
+            } else {
+                send(new P2B(largestBallot, acceptedLogs, unChosenSlotBegin),
+                        serverAddress);
+            }
+        }
+    }
 }
