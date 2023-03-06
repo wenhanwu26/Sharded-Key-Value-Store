@@ -54,8 +54,8 @@ public class PaxosServer extends Node {
     public void init() {
         // Your code here...
         sendP1A();
-        //set(new HeartbeatCheckTimer(), HEART_BEAT_CHECK_MILLIS);
-        //set(new HeartbeatTimer(), HEART_BEAT_MILLIS);
+//        set(new HeartbeatCheckTimer(), HEART_BEAT_CHECK_MILLIS);
+//        set(new HeartbeatTimer(), HEART_BEAT_MILLIS);
         // set(new GarbageCarTimer(), GARBAGE_CAR_MILLIS);
         slotOfLastExecutedAllServers.put(address(), 0);
     }
@@ -321,7 +321,7 @@ public class PaxosServer extends Node {
 
     public void executeCommand() {
         for (int i = 0; i < acceptedLogs.size(); i++) {
-            if (acceptedLogs.get(i).slot_num() >= unChosenSlotBegin) {
+            if (acceptedLogs.get(i).slot_num() > slotOfLastExecutedAllServers.get(address())) {
                 AMOCommand AMOCommand =
                         acceptedLogs.get(i).paxosRequest().command();
                 AMOResult AMOResult = app.execute(AMOCommand);
