@@ -345,6 +345,7 @@ public class PaxosServer extends Node {
     private void onHeartbeatCheckTimer(HeartbeatCheckTimer t) {
         if (count >= 2) {
             sendP1A();
+            isActive = false; // prevent node that suddenly become a leader (due to receive late p1b) to raise ballot and send p2a directly
             count = 0;
         } else {
             count++;
