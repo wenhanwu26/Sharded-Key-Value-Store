@@ -54,8 +54,8 @@ public class PaxosServer extends Node {
     public void init() {
         // Your code here...
         sendP1A();
-//        set(new HeartbeatCheckTimer(), HEART_BEAT_CHECK_MILLIS);
-//        set(new HeartbeatTimer(), HEART_BEAT_MILLIS);
+        set(new HeartbeatCheckTimer(), HEART_BEAT_CHECK_MILLIS);
+        set(new HeartbeatTimer(), HEART_BEAT_MILLIS);
         // set(new GarbageCarTimer(), GARBAGE_CAR_MILLIS);
         slotOfLastExecutedAllServers.put(address(), 0);
     }
@@ -219,7 +219,7 @@ public class PaxosServer extends Node {
     }
 
     private void handleP1B(P1B m, Address sender) {
-        if (largestBallot.compareTo(m.ballot()) <= 0) {
+        if (largestBallot.compareTo(m.ballot()) <= 0 && !isActive) {
             // // // System.out.println(address() + " receive P1B with " + m +" from "+sender);
             if (largestBallot.compareTo(m.ballot()) < 0) {
                 // a bit weird if getting here, send to this leader with ballot higher than this leader
@@ -249,6 +249,7 @@ public class PaxosServer extends Node {
             if (acceptedLogs.size() > 0 &&
                     acceptedLogs.get(acceptedLogs.size() - 1).slot_num() >
                             m.slot_num()) {
+                // filter old p2a message with same ballot #
                 return;
             }
             // System.out.println(address() + " receive P2A with " + m+" from "+sender);
@@ -450,6 +451,11 @@ public class PaxosServer extends Node {
         //            index1++;
         //            index2++;
         //        }
+
+            while (acceptedLogs.size() > index1 && acceptedLogs.get(index1).slot_num() < unChosenSlotBegin){
+                index1++;
+                index2++;
+            }
 
         //
         //        if(unChosenSlotBegin <= unChosenSlotBeginToCompare){
