@@ -37,7 +37,7 @@ public class PaxosServer extends Node {
     private HashMap<Address, Integer> P2BCountMap = new HashMap<>();
     private int P1BCount = 0;
     private HashMap<Address, Integer> P1BCountMap = new HashMap<>();
-    // private P1A messageComing;
+    private HashMap<Address, Pvalue> ClientRequestMap = new HashMap<>();
 
     /* -------------------------------------------------------------------------
         Construction and Initialization
@@ -174,18 +174,59 @@ public class PaxosServer extends Node {
         // isActive, then can send P2A
         // drop if inactive
         if (isActive) {
-            // // System.out.println(address() + " receive Paxos Request "+m);
+  //          System.out.println(acceptedLogs.size());
+            //System.out.println(address() + " receive Paxos Request "+m);
             // inefficient, may need optimize
+            // client will only send next request when got current one
+            // will not work, since client request map isnt sync
+//            if(ClientRequestMap.containsKey(sender)){
+//                int messageSeq = m.command().sequenceNum();
+//                int lastestMessageReceiveSeq = ClientRequestMap.get(sender).paxosRequest().command().sequenceNum();
+//                if(lastestMessageReceiveSeq>messageSeq){
+//                    return;
+//                }else if(lastestMessageReceiveSeq == messageSeq){
+//                    Pvalue pvalue = ClientRequestMap.get(sender);
+//                    if (pvalue.slot_num() < unChosenSlotBegin) {
+//                        AMOResult AMOResult =
+//                                app.execute(pvalue.paxosRequest().command());
+//                        if (AMOResult != null) {
+//                            // System.out.println("!!!!!!!!!!!!! Reply lost "+AMOResult);
+//                            send(new PaxosReply(AMOResult), sender);
+//                        }
+//                    } else {
+//                        sendP2A(acceptedLogs.get(acceptedLogs.size()-1).slot_num());
+//                    }
+//                    return;
+//                }
+//            }
+//            for(int i = acceptedLogs.size()-1; i>=0;i--){
+//                Pvalue pvalue = acceptedLogs.get(i);
+//                if (pvalue.paxosRequest().equals(m)) {
+//                    if (pvalue.slot_num() < unChosenSlotBegin) {
+//                        AMOResult AMOResult =
+//                                app.execute(pvalue.paxosRequest().command());
+//                        if (AMOResult != null) {
+//                            // System.out.println("!!!!!!!!!!!!! Reply lost "+AMOResult);
+//                            send(new PaxosReply(AMOResult), sender);
+//                        }
+//                    } else {
+//                        sendP2A(acceptedLogs.get(acceptedLogs.size() - 1)
+//                                            .slot_num());
+//                    }
+//                    return;
+//                }
+//            }
+
             for (Pvalue pvalue : acceptedLogs) {
                 if (pvalue.paxosRequest().equals(m)) {
                     if (pvalue.slot_num() < unChosenSlotBegin) {
                         AMOResult AMOResult =
                                 app.execute(pvalue.paxosRequest().command());
                         if (AMOResult != null) {
+                            // System.out.println("!!!!!!!!!!!!! Reply lost "+AMOResult);
                             send(new PaxosReply(AMOResult), sender);
                         }
                     } else {
-
                         sendP2A(acceptedLogs.get(acceptedLogs.size()-1).slot_num());
                     }
                     return;
@@ -195,7 +236,9 @@ public class PaxosServer extends Node {
             int slot_num = acceptedLogs.size() > 0 ?
                     acceptedLogs.get(acceptedLogs.size() - 1).slot_num() + 1 :
                     1;
-            acceptedLogs.add(new Pvalue(slot_num, largestBallot, m));
+            Pvalue newPvalue = new Pvalue(slot_num, largestBallot, m);
+            acceptedLogs.add(newPvalue);
+            ClientRequestMap.put(sender,newPvalue);
             for(int i = 0; i<acceptedLogs.size();i++){
                 Pvalue pvalue = acceptedLogs.get(i);
                 acceptedLogs.set(i, new Pvalue(pvalue.slot_num(),largestBallot,
@@ -209,12 +252,14 @@ public class PaxosServer extends Node {
 
     // Your code here...
     private void handleP1A(P1A m, Address sender) {
-        if (largestBallot.compareTo(m.ballot()) <= 0) {
-             // System.out.println(address() + " receive P1A with " + m +" from "+sender);
+        if (largestBallot.compareTo(m.ballot()) <= 0)  {
+            //System.out.println(address() + " receive P1A with " + m +" from "+sender);
             // messageComing = m;
+            count = 0;
             if (largestBallot.compareTo(m.ballot()) < 0) {
                 isActive = false;
                 largestBallot = m.ballot();
+                P1BCountMap = new HashMap<>();
                 sendP1B(sender);
             }
             // reset count when try to become leader
@@ -227,20 +272,22 @@ public class PaxosServer extends Node {
 
     private void handleP1B(P1B m, Address sender) {
         if (largestBallot.compareTo(m.ballot()) <= 0 && !isActive) {
-            // // // // System.out.println(address() + " receive P1B with " + m +" from "+sender);
+            // // // // // System.out.println(address() + " receive P1B with " + m +" from "+sender);
             if (largestBallot.compareTo(m.ballot()) < 0) {
                 // a bit weird if getting here, send to this leader with ballot higher than this leader
 //                isActive = false;
 //                largestBallot = m.ballot();
             } else if (largestBallot.compareTo(m.ballot()) == 0) {
-                // System.out.println(address() + " receive P1B with " + m +" from "+sender);
+                // System.out.println(address() + " receive P1B with " + m.ballot() +" from "+sender);
                 updateAcceptedLogs(m.acceptedLogs(), m.unChosenSlotBegin());
                 P1BCount++;
                 P1BCountMap.put(sender, 1);
-                // // // // System.out.println(address());
-                // // // // System.out.println(P1BCountMap);
+                // // // // // System.out.println(address());
+                // // // // // System.out.println(P1BCountMap);
                 if (P1BCountMap.size() + 1 > servers.length /
                         2) { // didnt send p1b to itself so +1 to include itself
+                   // System.out.println(address()+ " is leader");
+                    //System.out.println(P1BCountMap);
                     isActive = true;
                     //P1BCount = 0;
                     P1BCountMap = new HashMap<>();
@@ -259,7 +306,7 @@ public class PaxosServer extends Node {
                 // filter old p2a message with same ballot #
                 return;
             }
-            // System.out.println(address() + " receive P2A with " + m+" from "+sender);
+            // System.out.println(address() + " receive P2A with " + m.ballot()+" from "+sender);
             //            if (largestBallot.compareTo(m.ballot()) < 0) {
             //                isActive = false;
             //            }
@@ -267,18 +314,18 @@ public class PaxosServer extends Node {
             acceptedLogs = m.acceptedLogs();
             //executeCommand1(m.unChosenSlotBegin());
             unChosenSlotBegin = m.unChosenSlotBegin();
-            executeCommand1(unChosenSlotBegin);
+            //executeCommand1(unChosenSlotBegin);
                     //Math.max(m.unChosenSlotBegin(), unChosenSlotBegin);
             //P2BCount = 0;
             P2BCountMap = new HashMap<>();
-            // // // // // System.out.println(address() + " Sending P2B "+ acceptedLogs);
+            // // // // // // System.out.println(address() + " Sending P2B "+ acceptedLogs);
             sendP2B(m.slot_num());
         }
     }
 
     private void handleP2B(P2B m, Address sender) {
         //        if (largestBallot.compareTo(m.ballot()) < 0) {
-        //              // // // // System.out.println(address() + " receive P2B with " + m+" from "+sender);
+        //              // // // // // System.out.println(address() + " receive P2B with " + m+" from "+sender);
         //            isActive = false;
         //            largestBallot = m.ballot();
         //            acceptedLogs = m.acceptedLogs();
@@ -287,7 +334,7 @@ public class PaxosServer extends Node {
         //            //P2BCount = 0;
         //            P2BCountMap = new HashMap<>();
         //        } else if (largestBallot.compareTo(m.ballot()) == 0) {
-        //             // // // // System.out.println(address() + " receive P2B with " + m+" from "+sender);
+        //             // // // // // System.out.println(address() + " receive P2B with " + m+" from "+sender);
         //            P2BCountMap.put(sender,1);
         //            //P2BCount++;
         //            if (P2BCountMap.size() > servers.length / 2) {
@@ -296,21 +343,21 @@ public class PaxosServer extends Node {
         //                    unChosenSlotBegin =
         //                            acceptedLogs.get(acceptedLogs.size() - 1)
         //                                        .slot_num() + 1;
-        ////                    // // // // System.out.println(address()+ " "+ acceptedLogs);
-        ////                    // // // // System.out.println(unChosenSlotBegin);
+        ////                    // // // // // System.out.println(address()+ " "+ acceptedLogs);
+        ////                    // // // // // System.out.println(unChosenSlotBegin);
         //                }
         //                //P2BCount = 0;
         //                P2BCountMap = new HashMap<>();
         //            }
         //        }
         if (largestBallot.compareTo(m.ballot()) == 0 && isActive) {
-              // // System.out.println(address() + " receive P2B with " + m+" from "+sender);
+              // // // System.out.println(address() + " receive P2B with " + m+" from "+sender);
             if (acceptedLogs.size() > 0 &&
                     acceptedLogs.get(acceptedLogs.size() - 1).slot_num() !=
                             m.slot_num()) {
                 return;
             }
-            // System.out.println(address() + " receive P2B with " + m+" from "+sender);
+            // System.out.println(address() + " receive P2B with " + m.ballot()+" from "+sender);
             P2BCountMap.put(sender, 1);
             //P2BCount++;
             if (P2BCountMap.size() > servers.length / 2) {
@@ -319,12 +366,12 @@ public class PaxosServer extends Node {
                     unChosenSlotBegin =
                             acceptedLogs.get(acceptedLogs.size() - 1)
                                         .slot_num() + 1;
-                    //                    // // // // System.out.println(address()+ " "+ acceptedLogs);
-                    //                    // // // // System.out.println(unChosenSlotBegin);
+                    //                    // // // // // System.out.println(address()+ " "+ acceptedLogs);
+                    //                    // // // // // System.out.println(unChosenSlotBegin);
                 }
                 //P2BCount = 0;
                 P2BCountMap = new HashMap<>();
-                // // System.out.println(address() +" state after received P2B "+acceptedLogs + " "+unChosenSlotBegin);
+                // // // System.out.println(address() +" state after received P2B "+acceptedLogs + " "+unChosenSlotBegin);
             }
         }
     }
@@ -336,6 +383,7 @@ public class PaxosServer extends Node {
                         acceptedLogs.get(i).paxosRequest().command();
                 AMOResult AMOResult = app.execute(AMOCommand);
                 if (AMOResult != null && isActive) {
+                    //System.out.println(address()+ "send reply "+AMOResult.sequenceNum()+" to "+AMOCommand.clientAddress());
                     send(new PaxosReply(AMOResult), AMOCommand.clientAddress());
                 }
                 slotOfLastExecutedAllServers.put(address(),
@@ -352,7 +400,7 @@ public class PaxosServer extends Node {
                 AMOCommand AMOCommand =
                         acceptedLogs.get(i).paxosRequest().command();
                 AMOResult AMOResult = app.execute(AMOCommand);
-                if (AMOResult != null && isActive) {
+                if (AMOResult != null) {
                     send(new PaxosReply(AMOResult), AMOCommand.clientAddress());
                 }
                 slotOfLastExecutedAllServers.put(address(),
@@ -367,9 +415,11 @@ public class PaxosServer extends Node {
        -----------------------------------------------------------------------*/
     // Your code here...
     private int count = 0;
+    private boolean timeoutFromCurrentLeader = false;
 
     private void onHeartbeatCheckTimer(HeartbeatCheckTimer t) {
-        if (count >= 2) {
+        if (count > 2) {
+            //System.out.println("heartbeat time out at "+address());
             sendP1A();
             isActive = false; // prevent node that suddenly become a leader (due to receive late p1b) to raise ballot and send p2a directly
             count = 0;
@@ -388,13 +438,17 @@ public class PaxosServer extends Node {
                     send(new HeartBeat(largestBallot), serverAddress);
                 }
             }
+//            if(acceptedLogs.size()>0){
+//                sendP2A(acceptedLogs.get(acceptedLogs.size()-1).slot_num());
+//            }
         }
         set(t, HEART_BEAT_MILLIS);
     }
 
     private void handleHeartBeat(HeartBeat m, Address sender) {
-        // // // // // System.out.println(address()+ " received heartbeat from "+sender);
+        // // // // // // System.out.println(address()+ " received heartbeat from "+sender);
         if (largestBallot.compareTo(m.ballot()) <= 0) {
+            // System.out.println(address() +" receive hearbeat from "+sender);
             count = 0;
         }
     }
@@ -416,7 +470,7 @@ public class PaxosServer extends Node {
     }
 
     private void handleGarbageCar(GarbageCar m, Address sender) {
-        // // // // // System.out.println(address() + " received garbage from " + sender);
+        // // // // // // System.out.println(address() + " received garbage from " + sender);
         slotOfLastExecutedAllServers.put(sender, m.slotOfLastExecuted());
         if (slotOfLastExecutedAllServers.keySet().size() == servers.length) {
             int smallestSlotFinishExecuted = Integer.MAX_VALUE;
@@ -512,8 +566,8 @@ public class PaxosServer extends Node {
                 acceptedLogs.set(index1, LogsToCompare.get(index2));
 
             }
-            //            // // // // System.out.println(acceptedLogs);
-            //            // // // // System.out.println(maxUnChosenSlot);
+            //            // // // // // System.out.println(acceptedLogs);
+            //            // // // // // System.out.println(maxUnChosenSlot);
             index1++;
             index2++;
         }
@@ -573,10 +627,10 @@ public class PaxosServer extends Node {
         for (Address serverAddress : servers) {
             if (serverAddress.equals(address())) {
                 handleP2B(
-                        new P2B(largestBallot, acceptedLogs, unChosenSlotBegin,
+                        new P2B(largestBallot, unChosenSlotBegin,
                                 slot_num), address());
             } else {
-                send(new P2B(largestBallot, acceptedLogs, unChosenSlotBegin,
+                send(new P2B(largestBallot, unChosenSlotBegin,
                         slot_num), serverAddress);
             }
         }

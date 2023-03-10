@@ -771,14 +771,17 @@ public class PaxosTest extends BaseJUnitTest {
                         List<Address> newPartition = new LinkedList<>(clients);
                         Collections.shuffle(servers);
 
+                        //List<Address> toDeleted = new LinkedList<>(clients);
                         // Grab a majority
                         for (int j = 0; j * 2 <= nServers; j++) {
                             newPartition.add(servers.get(j));
+                            //toDeleted.add(servers.get(j));
                         }
-
+                        System.out.println(newPartition);
                         runSettings.reconnect().partition(newPartition);
                         Thread.sleep(2000);
                     }
+                    System.out.println("------------Recover----------------------------------");
 
                     runSettings.reconnect();
                     Thread.sleep(2000);

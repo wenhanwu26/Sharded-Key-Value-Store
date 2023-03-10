@@ -1,0 +1,299 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="AutoImportSettings">
+    <option name="autoReloadType" value="SELECTIVE" />
+  </component>
+  <component name="ChangeListManager">
+    <list default="true" id="695cc3d0-8efb-4f58-823d-082e6bfc7b7a" name="Changes" comment="">
+      <change beforePath="$PROJECT_DIR$/.gitignore" beforeDir="false" afterPath="$PROJECT_DIR$/.gitignore" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/.gitignore" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.gitignore" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/codeStyles/Project.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/codeStyles/Project.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/codeStyles/codeStyleConfig.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/codeStyles/codeStyleConfig.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/compiler.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/compiler.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/encodings.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/encodings.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/gradle.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/gradle.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/jarRepositories.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/jarRepositories.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/modules.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/modules.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/runConfigurations.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/scopes/Framework.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/scopes/Framework.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/uiDesigner.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/uiDesigner.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/vcs.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/vcs.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Makefile" beforeDir="false" afterPath="$PROJECT_DIR$/Makefile" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/README.md" beforeDir="false" afterPath="$PROJECT_DIR$/README.md" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/bin/grader/dslabs/framework/testing/visualization/FlatLaf.properties" beforeDir="false" afterPath="$PROJECT_DIR$/bin/grader/dslabs/framework/testing/visualization/FlatLaf.properties" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build.gradle" beforeDir="false" afterPath="$PROJECT_DIR$/build.gradle" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/framework/src/dslabs/framework/Address.java" beforeDir="false" afterPath="$PROJECT_DIR$/framework/src/dslabs/framework/Address.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/framework/src/dslabs/framework/Application.java" beforeDir="false" afterPath="$PROJECT_DIR$/framework/src/dslabs/framework/Application.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/framework/src/dslabs/framework/Client.java" beforeDir="false" afterPath="$PROJECT_DIR$/framework/src/dslabs/framework/Client.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/framework/src/dslabs/framework/Command.java" beforeDir="false" afterPath="$PROJECT_DIR$/framework/src/dslabs/framework/Command.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/framework/src/dslabs/framework/Message.java" beforeDir="false" afterPath="$PROJECT_DIR$/framework/src/dslabs/framework/Message.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/framework/src/dslabs/framework/Node.java" beforeDir="false" afterPath="$PROJECT_DIR$/framework/src/dslabs/framework/Node.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/framework/src/dslabs/framework/Result.java" beforeDir="false" afterPath="$PROJECT_DIR$/framework/src/dslabs/framework/Result.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/framework/src/dslabs/framework/Timer.java" beforeDir="false" afterPath="$PROJECT_DIR$/framework/src/dslabs/framework/Timer.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/framework/src/dslabs/framework/VizIgnore.java" beforeDir="false" afterPath="$PROJECT_DIR$/framework/src/dslabs/framework/VizIgnore.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/framework/tst-self/dslabs/framework/testing/SettingsTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/framework/tst-self/dslabs/framework/testing/SettingsTest.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/framework/tst-self/dslabs/framework/testing/WorkloadReplacementTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/framework/tst-self/dslabs/framework/testing/WorkloadReplacementTest.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/framework/tst-self/dslabs/framework/testing/junit/IgnoredDSlabsJUnitTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/framework/tst-self/dslabs/framework/testing/junit/IgnoredDSlabsJUnitTest.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/framework/tst-self/dslabs/framework/testing/junit/JUnitSanityCheckTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/framework/tst-self/dslabs/framework/testing/junit/JUnitSanityCheckTest.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/framework/tst-self/dslabs/framework/testing/search/SearchAndTraceMinimizerTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/framework/tst-self/dslabs/framework/testing/search/SearchAndTraceMinimizerTest.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/framework/tst-self/dslabs/framework/testing/search/TimerQueueTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/framework/tst-self/dslabs/framework/testing/search/TimerQueueTest.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/framework/tst-self/dslabs/framework/testing/utils/CloningTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/framework/tst-self/dslabs/framework/testing/utils/CloningTest.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/framework/tst-self/dslabs/framework/testing/visualization/DebuggerPerformanceTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/framework/tst-self/dslabs/framework/testing/visualization/DebuggerPerformanceTest.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/framework/tst-self/dslabs/framework/testing/visualization/ObjectJTreeTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/framework/tst-self/dslabs/framework/testing/visualization/ObjectJTreeTest.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/framework/tst-self/dslabs/framework/testing/visualization/VizConfigSanityCheckTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/framework/tst-self/dslabs/framework/testing/visualization/VizConfigSanityCheckTest.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/framework/tst/dslabs/framework/testing/AbstractState.java" beforeDir="false" afterPath="$PROJECT_DIR$/framework/tst/dslabs/framework/testing/AbstractState.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/framework/tst/dslabs/framework/testing/ClientWorker.java" beforeDir="false" afterPath="$PROJECT_DIR$/framework/tst/dslabs/framework/testing/ClientWorker.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/framework/tst/dslabs/framework/testing/Event.java" beforeDir="false" afterPath="$PROJECT_DIR$/framework/tst/dslabs/framework/testing/Event.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/framework/tst/dslabs/framework/testing/InfiniteWorkload.java" beforeDir="false" afterPath="$PROJECT_DIR$/framework/tst/dslabs/framework/testing/InfiniteWorkload.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/framework/tst/dslabs/framework/testing/LocalAddress.java" beforeDir="false" afterPath="$PROJECT_DIR$/framework/tst/dslabs/framework/testing/LocalAddress.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/framework/tst/dslabs/framework/testing/MessageEnvelope.java" beforeDir="false" afterPath="$PROJECT_DIR$/framework/tst/dslabs/framework/testing/MessageEnvelope.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/framework/tst/dslabs/framework/testing/StateGenerator.java" beforeDir="false" afterPath="$PROJECT_DIR$/framework/tst/dslabs/framework/testing/StateGenerator.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/framework/tst/dslabs/framework/testing/StatePredicate.java" beforeDir="false" afterPath="$PROJECT_DIR$/framework/tst/dslabs/framework/testing/StatePredicate.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/framework/tst/dslabs/framework/testing/TestSettings.java" beforeDir="false" afterPath="$PROJECT_DIR$/framework/tst/dslabs/framework/testing/TestSettings.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/framework/tst/dslabs/framework/testing/TimerEnvelope.java" beforeDir="false" afterPath="$PROJECT_DIR$/framework/tst/dslabs/framework/testing/TimerEnvelope.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/framework/tst/dslabs/framework/testing/Workload.java" beforeDir="false" afterPath="$PROJECT_DIR$/framework/tst/dslabs/framework/testing/Workload.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/framework/tst/dslabs/framework/testing/junit/BaseJUnitTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/framework/tst/dslabs/framework/testing/junit/BaseJUnitTest.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/framework/tst/dslabs/framework/testing/junit/CheckSavedTracesTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/framework/tst/dslabs/framework/testing/junit/CheckSavedTracesTest.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/framework/tst/dslabs/framework/testing/junit/ChecksEnabled.java" beforeDir="false" afterPath="$PROJECT_DIR$/framework/tst/dslabs/framework/testing/junit/ChecksEnabled.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/framework/tst/dslabs/framework/testing/junit/DSLabsJUnitTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/framework/tst/dslabs/framework/testing/junit/DSLabsJUnitTest.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/framework/tst/dslabs/framework/testing/junit/DSLabsTestCore.java" beforeDir="false" afterPath="$PROJECT_DIR$/framework/tst/dslabs/framework/testing/junit/DSLabsTestCore.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/framework/tst/dslabs/framework/testing/junit/DSLabsTestListener.java" beforeDir="false" afterPath="$PROJECT_DIR$/framework/tst/dslabs/framework/testing/junit/DSLabsTestListener.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/framework/tst/dslabs/framework/testing/junit/DSLabsTestRunner.java" beforeDir="false" afterPath="$PROJECT_DIR$/framework/tst/dslabs/framework/testing/junit/DSLabsTestRunner.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/framework/tst/dslabs/framework/testing/junit/InvariantViolationError.java" beforeDir="false" afterPath="$PROJECT_DIR$/framework/tst/dslabs/framework/testing/junit/InvariantViolationError.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/framework/tst/dslabs/framework/testing/junit/Lab.java" beforeDir="false" afterPath="$PROJECT_DIR$/framework/tst/dslabs/framework/testing/junit/Lab.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/framework/tst/dslabs/framework/testing/junit/Part.java" beforeDir="false" afterPath="$PROJECT_DIR$/framework/tst/dslabs/framework/testing/junit/Part.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/framework/tst/dslabs/framework/testing/junit/ReplaySavedTracesTestListener.java" beforeDir="false" afterPath="$PROJECT_DIR$/framework/tst/dslabs/framework/testing/junit/ReplaySavedTracesTestListener.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/framework/tst/dslabs/framework/testing/junit/RunTests.java" beforeDir="false" afterPath="$PROJECT_DIR$/framework/tst/dslabs/framework/testing/junit/RunTests.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/framework/tst/dslabs/framework/testing/junit/SearchTests.java" beforeDir="false" afterPath="$PROJECT_DIR$/framework/tst/dslabs/framework/testing/junit/SearchTests.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/framework/tst/dslabs/framework/testing/junit/TestDescription.java" beforeDir="false" afterPath="$PROJECT_DIR$/framework/tst/dslabs/framework/testing/junit/TestDescription.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/framework/tst/dslabs/framework/testing/junit/TestOrder.java" beforeDir="false" afterPath="$PROJECT_DIR$/framework/tst/dslabs/framework/testing/junit/TestOrder.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/framework/tst/dslabs/framework/testing/junit/TestPointValue.java" beforeDir="false" afterPath="$PROJECT_DIR$/framework/tst/dslabs/framework/testing/junit/TestPointValue.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/framework/tst/dslabs/framework/testing/junit/TraceReplaySearch.java" beforeDir="false" afterPath="$PROJECT_DIR$/framework/tst/dslabs/framework/testing/junit/TraceReplaySearch.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/framework/tst/dslabs/framework/testing/junit/UnreliableTests.java" beforeDir="false" afterPath="$PROJECT_DIR$/framework/tst/dslabs/framework/testing/junit/UnreliableTests.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/framework/tst/dslabs/framework/testing/junit/VizClientStarted.java" beforeDir="false" afterPath="$PROJECT_DIR$/framework/tst/dslabs/framework/testing/junit/VizClientStarted.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/framework/tst/dslabs/framework/testing/runner/Network.java" beforeDir="false" afterPath="$PROJECT_DIR$/framework/tst/dslabs/framework/testing/runner/Network.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/framework/tst/dslabs/framework/testing/runner/RunSettings.java" beforeDir="false" afterPath="$PROJECT_DIR$/framework/tst/dslabs/framework/testing/runner/RunSettings.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/framework/tst/dslabs/framework/testing/runner/RunState.java" beforeDir="false" afterPath="$PROJECT_DIR$/framework/tst/dslabs/framework/testing/runner/RunState.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/framework/tst/dslabs/framework/testing/search/Search.java" beforeDir="false" afterPath="$PROJECT_DIR$/framework/tst/dslabs/framework/testing/search/Search.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/framework/tst/dslabs/framework/testing/search/SearchResults.java" beforeDir="false" afterPath="$PROJECT_DIR$/framework/tst/dslabs/framework/testing/search/SearchResults.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/framework/tst/dslabs/framework/testing/search/SearchSettings.java" beforeDir="false" afterPath="$PROJECT_DIR$/framework/tst/dslabs/framework/testing/search/SearchSettings.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/framework/tst/dslabs/framework/testing/search/SearchState.java" beforeDir="false" afterPath="$PROJECT_DIR$/framework/tst/dslabs/framework/testing/search/SearchState.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/framework/tst/dslabs/framework/testing/search/SerializableTrace.java" beforeDir="false" afterPath="$PROJECT_DIR$/framework/tst/dslabs/framework/testing/search/SerializableTrace.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/framework/tst/dslabs/framework/testing/search/TimerQueue.java" beforeDir="false" afterPath="$PROJECT_DIR$/framework/tst/dslabs/framework/testing/search/TimerQueue.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/framework/tst/dslabs/framework/testing/search/TraceMinimizer.java" beforeDir="false" afterPath="$PROJECT_DIR$/framework/tst/dslabs/framework/testing/search/TraceMinimizer.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/framework/tst/dslabs/framework/testing/utils/CheckLogger.java" beforeDir="false" afterPath="$PROJECT_DIR$/framework/tst/dslabs/framework/testing/utils/CheckLogger.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/framework/tst/dslabs/framework/testing/utils/ClassSearch.java" beforeDir="false" afterPath="$PROJECT_DIR$/framework/tst/dslabs/framework/testing/utils/ClassSearch.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/framework/tst/dslabs/framework/testing/utils/Cloning.java" beforeDir="false" afterPath="$PROJECT_DIR$/framework/tst/dslabs/framework/testing/utils/Cloning.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/framework/tst/dslabs/framework/testing/utils/GlobalSettings.java" beforeDir="false" afterPath="$PROJECT_DIR$/framework/tst/dslabs/framework/testing/utils/GlobalSettings.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/framework/tst/dslabs/framework/testing/utils/SerializableFunction.java" beforeDir="false" afterPath="$PROJECT_DIR$/framework/tst/dslabs/framework/testing/utils/SerializableFunction.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/framework/tst/dslabs/framework/testing/utils/SerializablePredicate.java" beforeDir="false" afterPath="$PROJECT_DIR$/framework/tst/dslabs/framework/testing/utils/SerializablePredicate.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/framework/tst/dslabs/framework/testing/utils/SerializableSupplier.java" beforeDir="false" afterPath="$PROJECT_DIR$/framework/tst/dslabs/framework/testing/utils/SerializableSupplier.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/framework/tst/dslabs/framework/testing/visualization/DebuggerWindow.java" beforeDir="false" afterPath="$PROJECT_DIR$/framework/tst/dslabs/framework/testing/visualization/DebuggerWindow.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/framework/tst/dslabs/framework/testing/visualization/EventTreeState.java" beforeDir="false" afterPath="$PROJECT_DIR$/framework/tst/dslabs/framework/testing/visualization/EventTreeState.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/framework/tst/dslabs/framework/testing/visualization/EventsPanel.java" beforeDir="false" afterPath="$PROJECT_DIR$/framework/tst/dslabs/framework/testing/visualization/EventsPanel.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/framework/tst/dslabs/framework/testing/visualization/FlatLaf.properties" beforeDir="false" afterPath="$PROJECT_DIR$/framework/tst/dslabs/framework/testing/visualization/FlatLaf.properties" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/framework/tst/dslabs/framework/testing/visualization/JTrees.java" beforeDir="false" afterPath="$PROJECT_DIR$/framework/tst/dslabs/framework/testing/visualization/JTrees.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/framework/tst/dslabs/framework/testing/visualization/SavedTraceViz.java" beforeDir="false" afterPath="$PROJECT_DIR$/framework/tst/dslabs/framework/testing/visualization/SavedTraceViz.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/framework/tst/dslabs/framework/testing/visualization/SingleNodePanel.java" beforeDir="false" afterPath="$PROJECT_DIR$/framework/tst/dslabs/framework/testing/visualization/SingleNodePanel.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/framework/tst/dslabs/framework/testing/visualization/StateTreeCanvas.java" beforeDir="false" afterPath="$PROJECT_DIR$/framework/tst/dslabs/framework/testing/visualization/StateTreeCanvas.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/framework/tst/dslabs/framework/testing/visualization/Utils.java" beforeDir="false" afterPath="$PROJECT_DIR$/framework/tst/dslabs/framework/testing/visualization/Utils.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/framework/tst/dslabs/framework/testing/visualization/VizClient.java" beforeDir="false" afterPath="$PROJECT_DIR$/framework/tst/dslabs/framework/testing/visualization/VizClient.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/framework/tst/dslabs/framework/testing/visualization/VizConfig.java" beforeDir="false" afterPath="$PROJECT_DIR$/framework/tst/dslabs/framework/testing/visualization/VizConfig.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/framework/tst/dslabs/framework/testing/visualization/ZoomableCanvas.java" beforeDir="false" afterPath="$PROJECT_DIR$/framework/tst/dslabs/framework/testing/visualization/ZoomableCanvas.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/framework/tst/dslabs/framework/testing/visualization/examples/paxosmadesimple/IncorrectSingleInstancePaxos.java" beforeDir="false" afterPath="$PROJECT_DIR$/framework/tst/dslabs/framework/testing/visualization/examples/paxosmadesimple/IncorrectSingleInstancePaxos.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/framework/tst/dslabs/framework/testing/visualization/examples/paxosmadesimple/SingleInstancePaxos.java" beforeDir="false" afterPath="$PROJECT_DIR$/framework/tst/dslabs/framework/testing/visualization/examples/paxosmadesimple/SingleInstancePaxos.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/gradlew.bat" beforeDir="false" afterPath="$PROJECT_DIR$/gradlew.bat" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/handout/Makefile" beforeDir="false" afterPath="$PROJECT_DIR$/handout/Makefile" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/handout/README.md" beforeDir="false" afterPath="$PROJECT_DIR$/handout/README.md" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/handout/run-tests.py" beforeDir="false" afterPath="$PROJECT_DIR$/handout/run-tests.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lab/README.md" beforeDir="false" afterPath="$PROJECT_DIR$/lab/README.md" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lab/REPORT.md" beforeDir="false" afterPath="$PROJECT_DIR$/lab/REPORT.md" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lab/src/dslabs.atmostonce/AMOApplication.java" beforeDir="false" afterPath="$PROJECT_DIR$/lab/src/dslabs.atmostonce/AMOApplication.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lab/src/dslabs.atmostonce/AMOCommand.java" beforeDir="false" afterPath="$PROJECT_DIR$/lab/src/dslabs.atmostonce/AMOCommand.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lab/src/dslabs.atmostonce/AMOResult.java" beforeDir="false" afterPath="$PROJECT_DIR$/lab/src/dslabs.atmostonce/AMOResult.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lab/src/dslabs.kvstore/KVStore.java" beforeDir="false" afterPath="$PROJECT_DIR$/lab/src/dslabs.kvstore/KVStore.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lab/src/dslabs.paxos/Ballot.java" beforeDir="false" afterPath="$PROJECT_DIR$/lab/src/dslabs.paxos/Ballot.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lab/src/dslabs.paxos/Messages.java" beforeDir="false" afterPath="$PROJECT_DIR$/lab/src/dslabs.paxos/Messages.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lab/src/dslabs.paxos/PaxosClient.java" beforeDir="false" afterPath="$PROJECT_DIR$/lab/src/dslabs.paxos/PaxosClient.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lab/src/dslabs.paxos/PaxosDecision.java" beforeDir="false" afterPath="$PROJECT_DIR$/lab/src/dslabs.paxos/PaxosDecision.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lab/src/dslabs.paxos/PaxosLogSlotStatus.java" beforeDir="false" afterPath="$PROJECT_DIR$/lab/src/dslabs.paxos/PaxosLogSlotStatus.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lab/src/dslabs.paxos/PaxosReply.java" beforeDir="false" afterPath="$PROJECT_DIR$/lab/src/dslabs.paxos/PaxosReply.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lab/src/dslabs.paxos/PaxosRequest.java" beforeDir="false" afterPath="$PROJECT_DIR$/lab/src/dslabs.paxos/PaxosRequest.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lab/src/dslabs.paxos/PaxosServer.java" beforeDir="false" afterPath="$PROJECT_DIR$/lab/src/dslabs.paxos/PaxosServer.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lab/src/dslabs.paxos/Pvalue.java" beforeDir="false" afterPath="$PROJECT_DIR$/lab/src/dslabs.paxos/Pvalue.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lab/src/dslabs.paxos/Timers.java" beforeDir="false" afterPath="$PROJECT_DIR$/lab/src/dslabs.paxos/Timers.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lab/submit.sh" beforeDir="false" afterPath="$PROJECT_DIR$/lab/submit.sh" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lab/tst/dslabs.kvstore/KVStoreTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/lab/tst/dslabs.kvstore/KVStoreTest.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lab/tst/dslabs.kvstore/KVStoreWorkload.java" beforeDir="false" afterPath="$PROJECT_DIR$/lab/tst/dslabs.kvstore/KVStoreWorkload.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lab/tst/dslabs.paxos/PaxosTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/lab/tst/dslabs.paxos/PaxosTest.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lab/tst/dslabs.paxos/PaxosVizConfig.java" beforeDir="false" afterPath="$PROJECT_DIR$/lab/tst/dslabs.paxos/PaxosVizConfig.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lab/tst/dslabs.testsuites/Lab4Part1TestSuite.java" beforeDir="false" afterPath="$PROJECT_DIR$/lab/tst/dslabs.testsuites/Lab4Part1TestSuite.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lab/tst/dslabs.testsuites/Lab4TestSuite.java" beforeDir="false" afterPath="$PROJECT_DIR$/lab/tst/dslabs.testsuites/Lab4TestSuite.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lab/tst/dslabs.vizconfigs/Lab4VizConfig.java" beforeDir="false" afterPath="$PROJECT_DIR$/lab/tst/dslabs.vizconfigs/Lab4VizConfig.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lombok.config" beforeDir="false" afterPath="$PROJECT_DIR$/lombok.config" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/grader/resources/dslabs/framework/testing/visualization/FlatLaf.properties" beforeDir="false" afterPath="$PROJECT_DIR$/out/grader/resources/dslabs/framework/testing/visualization/FlatLaf.properties" afterDir="false" />
+    </list>
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="ExternalProjectsData">
+    <projectState path="$PROJECT_DIR$">
+      <ProjectState />
+    </projectState>
+  </component>
+  <component name="ExternalProjectsManager">
+    <system id="GRADLE">
+      <state>
+        <projects_view>
+          <tree_state>
+            <expand />
+            <select />
+          </tree_state>
+        </projects_view>
+      </state>
+    </system>
+  </component>
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+  </component>
+  <component name="MarkdownSettingsMigration">
+    <option name="stateVersion" value="1" />
+  </component>
+  <component name="ProjectId" id="2MUNepJRtWQQAJk3gOzFaHLgSMs" />
+  <component name="ProjectViewState">
+    <option name="hideEmptyMiddlePackages" value="true" />
+    <option name="showLibraryContents" value="true" />
+  </component>
+  <component name="RunManager" selected="JUnit.PaxosTest">
+    <configuration name="All in project4-paxos.labsTests" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="project4-paxos.labsTests" />
+      <useClassPathOnly />
+      <option name="PACKAGE_NAME" value="" />
+      <option name="MAIN_CLASS_NAME" value="" />
+      <option name="METHOD_NAME" value="" />
+      <option name="TEST_OBJECT" value="package" />
+      <option name="VM_PARAMETERS" value="-ea --add-opens java.base/jdk.internal.reflect=ALL-UNNAMED --add-opens java.base/java.lang=ALL-UNNAMED --add-opens java.base/java.util=ALL-UNNAMED --add-opens java.base/java.util.concurrent.atomic=ALL-UNNAMED" />
+      <option name="PARAMETERS" value="" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="PaxosTest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="project4-paxos.labsTests" />
+      <useClassPathOnly />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="dslabs.paxos.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="PACKAGE_NAME" value="dslabs.paxos" />
+      <option name="MAIN_CLASS_NAME" value="dslabs.paxos.PaxosTest" />
+      <option name="METHOD_NAME" value="" />
+      <option name="TEST_OBJECT" value="class" />
+      <option name="VM_PARAMETERS" value="-ea --add-opens java.base/jdk.internal.reflect=ALL-UNNAMED --add-opens java.base/java.lang=ALL-UNNAMED --add-opens java.base/java.util=ALL-UNNAMED --add-opens java.base/java.util.concurrent.atomic=ALL-UNNAMED" />
+      <option name="PARAMETERS" value="" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="PaxosTest.test17ConstantRepartition" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="project4-paxos.labsTests" />
+      <useClassPathOnly />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="dslabs.paxos.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="PACKAGE_NAME" value="dslabs.paxos" />
+      <option name="MAIN_CLASS_NAME" value="dslabs.paxos.PaxosTest" />
+      <option name="METHOD_NAME" value="test17ConstantRepartition" />
+      <option name="TEST_OBJECT" value="method" />
+      <option name="VM_PARAMETERS" value="-ea --add-opens java.base/jdk.internal.reflect=ALL-UNNAMED --add-opens java.base/java.lang=ALL-UNNAMED --add-opens java.base/java.util=ALL-UNNAMED --add-opens java.base/java.util.concurrent.atomic=ALL-UNNAMED" />
+      <option name="PARAMETERS" value="" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="PaxosTest.test18ConstantRepartitionUnreliable" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="project4-paxos.labsTests" />
+      <useClassPathOnly />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="dslabs.paxos.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="PACKAGE_NAME" value="dslabs.paxos" />
+      <option name="MAIN_CLASS_NAME" value="dslabs.paxos.PaxosTest" />
+      <option name="METHOD_NAME" value="test18ConstantRepartitionUnreliable" />
+      <option name="TEST_OBJECT" value="method" />
+      <option name="VM_PARAMETERS" value="-ea --add-opens java.base/jdk.internal.reflect=ALL-UNNAMED --add-opens java.base/java.lang=ALL-UNNAMED --add-opens java.base/java.util=ALL-UNNAMED --add-opens java.base/java.util.concurrent.atomic=ALL-UNNAMED" />
+      <option name="PARAMETERS" value="" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="dslabs.kvstore in project4-paxos.labsTests" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="project4-paxos.labsTests" />
+      <useClassPathOnly />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="dslabs.kvstore.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="PACKAGE_NAME" value="dslabs.kvstore" />
+      <option name="MAIN_CLASS_NAME" value="" />
+      <option name="METHOD_NAME" value="" />
+      <option name="TEST_OBJECT" value="package" />
+      <option name="VM_PARAMETERS" value="-ea --add-opens java.base/jdk.internal.reflect=ALL-UNNAMED --add-opens java.base/java.lang=ALL-UNNAMED --add-opens java.base/java.util=ALL-UNNAMED --add-opens java.base/java.util.concurrent.atomic=ALL-UNNAMED" />
+      <option name="PARAMETERS" value="" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <recent_temporary>
+      <list>
+        <item itemvalue="JUnit.PaxosTest" />
+        <item itemvalue="JUnit.dslabs.kvstore in project4-paxos.labsTests" />
+        <item itemvalue="JUnit.All in project4-paxos.labsTests" />
+        <item itemvalue="JUnit.PaxosTest.test18ConstantRepartitionUnreliable" />
+        <item itemvalue="JUnit.PaxosTest.test17ConstantRepartition" />
+      </list>
+    </recent_temporary>
+  </component>
+  <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="695cc3d0-8efb-4f58-823d-082e6bfc7b7a" name="Changes" comment="" />
+      <created>1677818298970</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1677818298970</updated>
+      <workItem from="1677818303609" duration="20298000" />
+      <workItem from="1677932585362" duration="123324000" />
+      <workItem from="1678275315892" duration="748000" />
+    </task>
+    <servers />
+  </component>
+  <component name="TypeScriptGeneratedFilesManager">
+    <option name="version" value="3" />
+  </component>
+  <component name="Vcs.Log.Tabs.Properties">
+    <option name="TAB_STATES">
+      <map>
+        <entry key="MAIN">
+          <value>
+            <State />
+          </value>
+        </entry>
+      </map>
+    </option>
+    <option name="oldMeFiltersMigrated" value="true" />
+  </component>
+</project>

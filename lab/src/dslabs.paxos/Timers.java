@@ -12,7 +12,7 @@ final class ClientTimer implements Timer {
 
 @Data
 final class HeartbeatCheckTimer implements Timer {
-    static final int HEART_BEAT_CHECK_MILLIS = 50;
+    static final int HEART_BEAT_CHECK_MILLIS = 75;
 }
 
 @Data
