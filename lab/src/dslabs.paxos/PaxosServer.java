@@ -280,7 +280,7 @@ public class PaxosServer extends Node {
             } else if (largestBallot.compareTo(m.ballot()) == 0) {
                 // System.out.println(address() + " receive P1B with " + m.ballot() +" from "+sender);
                 updateAcceptedLogs(m.acceptedLogs(), m.unChosenSlotBegin());
-                P1BCount++;
+                //P1BCount++;
                 P1BCountMap.put(sender, 1);
                 // // // // // System.out.println(address());
                 // // // // // System.out.println(P1BCountMap);
@@ -299,6 +299,10 @@ public class PaxosServer extends Node {
     }
 
     private void handleP2A(P2A m, Address sender) {
+        if(largestBallot.compareTo(m.ballot()) < 0){
+            isActive = false;
+            P1BCountMap = new HashMap<>();
+        }
         if (largestBallot.compareTo(m.ballot()) == 0) {
             if (acceptedLogs.size() > 0 &&
                     acceptedLogs.get(acceptedLogs.size() - 1).slot_num() >
@@ -314,7 +318,7 @@ public class PaxosServer extends Node {
             acceptedLogs = m.acceptedLogs();
             //executeCommand1(m.unChosenSlotBegin());
             unChosenSlotBegin = m.unChosenSlotBegin();
-            //executeCommand1(unChosenSlotBegin);
+            executeCommand1(unChosenSlotBegin);
                     //Math.max(m.unChosenSlotBegin(), unChosenSlotBegin);
             //P2BCount = 0;
             P2BCountMap = new HashMap<>();
@@ -447,7 +451,7 @@ public class PaxosServer extends Node {
 
     private void handleHeartBeat(HeartBeat m, Address sender) {
         // // // // // // System.out.println(address()+ " received heartbeat from "+sender);
-        if (largestBallot.compareTo(m.ballot()) <= 0) {
+        if (largestBallot.compareTo(m.ballot()) == 0) {
             // System.out.println(address() +" receive hearbeat from "+sender);
             count = 0;
         }
