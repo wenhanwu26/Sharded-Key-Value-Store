@@ -1,3 +1,8 @@
+Sharded Key-Value Store (DS Labs from the University of Washington)	                     			            May 2023
+•	Engineered a high-performance, distributed Key-Value storage system, mirroring the architectural essence of Google Spanner, crafted to facilitate robust multi-node transactions in a sharded environment using Java
+•	Developed a customized Paxos consensus protocol to ensure data consistency, system reliability and operational uptime
+
+
 DSLabs was developed as the educational framework for  **CSE452 Distributed
 Systems** from the *University of Washington* and it was written by Ellis
 Michael. It is a framework for creating, testing, model checking, visualizing, and debugging
