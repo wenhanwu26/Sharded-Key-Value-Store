@@ -1,5 +1,7 @@
-Sharded Key-Value Store (DS Labs from the University of Washington)	                     			            May 2023
+Sharded Key-Value Store (DS Labs from the University of Washington)	        
+
 •	Engineered a high-performance, distributed Key-Value storage system, mirroring the architectural essence of Google Spanner, crafted to facilitate robust multi-node transactions in a sharded environment using Java
+
 •	Developed a customized Paxos consensus protocol to ensure data consistency, system reliability and operational uptime
 
 
